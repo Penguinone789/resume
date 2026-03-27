@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高啟坤 - 个人Wiki (SUSTech)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --main-blue: #004a92;
+            --bg-gray: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            margin: 0;
+            background: var(--bg-gray);
+        }
+
+        /* 侧边导航 */
+        nav {
+            width: 260px;
+            height: 100vh;
+            background: var(--main-blue);
+            color: white;
+            position: fixed;
+            padding: 30px 20px;
+            box-sizing: border-box;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 20px;
+        }
+
+        nav h2 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        nav p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 20px 0;
+        }
+
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        nav ul li a i {
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        /* 主体内容 */
+        main {
+            margin-left: 260px;
+            padding: 40px;
+            width: 100%;
+            max-width: 900px;
+            min-height: 100vh;
+        }
+
+        .section {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 内容样式 */
+        h1 {
+            color: var(--main-blue);
+            border-bottom: 2px solid var(--main-blue);
+            padding-bottom: 10px;
+        }
+
+        .tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 5px;
+        }
+
+        .exp-item {
+            margin-bottom: 25px;
+            border-left: 3px solid #ddd;
+            padding-left: 20px;
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="你的照片.jpg" alt="高啟坤" class="profile-img">
+        <h2>高啟坤</h2>
+        <p>南方科技大学 | 临床医学</p>
+        <ul>
+            <li><a onclick="show('home')"><i class="fas fa-user"></i> 基本信息</a></li>
+            <li><a onclick="show('research')"><i class="fas fa-microscope"></i> 科研亮点</a></li>
+            <li><a onclick="show('intern')"><i class="fas fa-hospital"></i> 实习经历</a></li>
+            <li><a onclick="show('honor')"><i class="fas fa-award"></i> 荣誉奖项</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="home" class="section active">
+            <h1>个人简介</h1>
+            <p><strong>教育背景：</strong> 南方科技大学 临床医学 (GPA 3.74/4.0) </p>
+            <p><strong>核心能力：</strong> <span class="tag">生信分析(WGS/scRNA-seq)</span> <span
+                    class="tag">分子实验(qPCR/WB)</span> <span class="tag">AI医学应用</span> </p>
+            <p><strong>语言：</strong> 雅思 7.0 / 托福 94 / 六级 610 [cite: 2]</p>
+        </div>
+
+        <div id="research" class="section">
+            <h1>科研经历</h1>
+            <div class="exp-item">
+                <h3>甲状腺癌中 p53 调控机制研究</h3>
+                <p><span class="tag">校级优秀大创</span> 指导老师：邢明照教授 </p>
+                <ul>
+                    <li>通过 WB, qPCR 等技术独立推动分子机制研究。</li>
+                </ul>
+            </div>
+            <div class="exp-item">
+                <h3>黑色素瘤计算分型研究</h3>
+                <p><span class="tag">独立一作</span> <span class="tag">JCR一区在投</span> </p>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function show(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
